@@ -1,20 +1,18 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace API.Controllers;
-
-[ApiController]
-[Route("[controller]")]
-public class WeatherForecastController : ControllerBase
+namespace API.Controllers
 {
-    [HttpGet(Name = "GetWeatherForecast")]
-    public IEnumerable<WeatherForecast> Get()
+    public class WeatherForecastController : BaseApiController
     {
-        return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+        [HttpGet(Name = "GetWeatherForecast")]
+        public IEnumerable<WeatherForecast> Get()
         {
-            Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            TemperatureC = Random.Shared.Next(-20, 55),
-            Summary = "Shit weather"
-        })
-        .ToArray();
+            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            {
+                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
+                TemperatureC = Random.Shared.Next(-20, 55),
+            })
+            .ToArray();
+        }
     }
 }
