@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../services/account.service';
+import { Login } from '../models/login';
 
 @Component({
   selector: 'app-nav',
@@ -8,7 +9,7 @@ import { AccountService } from '../services/account.service';
 })
 export class NavComponent implements OnInit {
   title: string = 'Social App';
-  model: Model = { username: '', password: '' };
+  model: Login = { username: '', password: '' };
   loggedIn: boolean = false;
 
   constructor(private accountService: AccountService) {}
