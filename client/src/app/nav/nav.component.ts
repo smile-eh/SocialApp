@@ -1,13 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-class Model {
-  username: string;
-  password: string;
-  constructor() {
-    this.username = '';
-    this.password = '';
-  }
-}
+import { AccountService } from '../services/account.service';
 
 @Component({
   selector: 'app-nav',
@@ -16,13 +8,24 @@ class Model {
 })
 export class NavComponent implements OnInit {
   title: string = 'Social App';
-  model: Model = new Model();
+  model: Model = { username: '', password: '' };
+  loggedIn: boolean = false;
 
-  constructor() {}
+  constructor(private accountService: AccountService) {}
 
   ngOnInit(): void {}
 
   login() {
-    console.log(this.model);
+    this.accountService.login(this.model).subscribe({
+      next: (response) => {
+        console.log(response);
+        this.loggedIn = true;
+      },
+      error: (error) => console.log(error),
+    });
+  }
+
+  logout() {
+    this.loggedIn = false;
   }
 }
