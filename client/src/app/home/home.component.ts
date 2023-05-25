@@ -28,9 +28,11 @@ export class HomeComponent implements OnInit {
       error: (message) => {
         console.log(message);
       },
-      complete: () => {
-        console.log(this.users);
-      },
+      complete: () => {},
     });
+  }
+
+  handleCancel(event: boolean) {
+    this.registerMode = event;
   }
 }
