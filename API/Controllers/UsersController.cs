@@ -22,7 +22,7 @@ namespace API.Controllers
             this.userRepository = userRepository;
 
         }
-        [AllowAnonymous]
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers()
         {
