@@ -1,0 +1,11 @@
+.nv-file-over{
+    border: dotted 3px grey;
+}
+
+input[type=file]{
+    color: transparent;
+    max-width: 200px;
+}
+input[type=file]::selection{
+    color: transparent;
+}
