@@ -38,6 +38,11 @@ export class AccountService {
       .post<User>(this.baseUrl + 'account/register', {
         username: regModel.username,
         password: regModel.password,
+        gender: regModel.gender,
+        dateOfBirth: regModel.dateOfBirth,
+        knownAs: regModel.knownAs,
+        city: regModel.city,
+        country: regModel.country,
       })
       .pipe(
         map((response: User) => {
